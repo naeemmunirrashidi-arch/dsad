@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Be My Valentine</title>
+    <style>
+        body {
+            background-color: #ffd6e8;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            padding-top: 120px;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-size: 50px;
+            color: #ff4d88;
+            transition: 0.3s;
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 20px;
+            border-radius: 15px;
+            border: none;
+            cursor: pointer;
+            margin: 10px;
+            transition: 0.3s;
+        }
+
+        #yes {
+            background-color: #ff66a3;
+            color: white;
+        }
+
+        #no {
+            background-color: #cccccc;
+        }
+    </style>
+</head>
+<body>
+
+<h1 id="question">will you be my valentine &lt;3</h1>
+
+<button id="yes" onclick="pressYes()">yes</button>
+<button id="no" onclick="pressNo()">no</button>
+
+<script>
+let noClicks = 0;
+
+function pressNo() {
+    noClicks++;
+    const question = document.getElementById("question");
+    const yesBtn = document.getElementById("yes");
+    const noBtn = document.getElementById("no");
+
+    const messages = [
+        "are u sure? :(",
+        "are you really sure? :(",
+        "are you really really sure? :(",
+        "are you REALLY really really sure??? :(",
+        "last chance... are you absolutely sure? :("
+    ];
+
+    if (noClicks <= messages.length) {
+        question.innerText = messages[noClicks - 1];
+    } else {
+        question.innerText = "this is getting suspicious... are you sure? :(";
+    }
+
+    yesBtn.style.fontSize = (20 + noClicks * 12) + "px";
+    noBtn.style.fontSize = Math.max(5, 20 - noClicks * 4) + "px";
+}
+
+function pressYes() {
+    document.body.innerHTML = `
+        <h1 style="color:#ff4d88; font-size:60px;">
+        YAY 💖 you are officially my valentine now
+        </h1>
+        <p style="font-size:25px;">best decision ever honestly</p>
+    `;
+}
+</script>
+
+</body>
+</html>
